@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateSlugsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('slugs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('entity_id')->unsigned()->nullable();
+            $table->string('entity_type')->nullable();
+            $table->string('value')->index();
+            $table->boolean('redirect')->unsigned()->nullable()->default(0);
+            $table->timestamps();
+
+            $table->index(['entity_id', 'entity_type']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('slugs');
+    }
+}

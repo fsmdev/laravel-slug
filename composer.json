@@ -1,0 +1,37 @@
+{
+    "name": "fsmdev/laravel-slug",
+    "description": "Slug management for Laravel 5",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "laravel 5",
+        "slug",
+        "url",
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Igor Mozgalov",
+            "email": "fsmdev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fsmdev\\LaravelSlug\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fsmdev\\LaravelSlug\\SlugServiceProvider"
+            ],
+            "aliases": {
+                "Slug": "Fsmdev\\LaravelSlug\\Facades\\Slug"
+            }
+        }
+    }
+}
