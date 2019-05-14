@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package Fsmdev\LaravelSlug\Facades
  *
  * @method static Model findOrRedirect(string $value, Closure $getUrl, string|null $type)
- * @method static Model findOrFail(string $value, string|null $type)
+ * @method static Model findOrFail(string $value, string|null $type )
  * @method static null|Model find(string $value, string|null $type)
  */
 class Slug extends Facade
