@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Model;
  * Class Slug
  * @package Fsmdev\LaravelSlug\Facades
  *
- * @method static Model findOrRedirect(string $value, Closure $getUrl, string|null $type)
- * @method static Model findOrFail(string $value, string|null $type )
- * @method static null|Model find(string $value, string|null $type)
+ * @method static Model findOrRedirect(string $value, Closure $getUrl, string|null $type = null)
+ * @method static Model findOrFail(string $value, string|null $type = null)
+ * @method static null|Model find(string $value, string|null $type = null)
  */
 class Slug extends Facade
 {
