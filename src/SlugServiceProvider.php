@@ -2,8 +2,8 @@
 
 namespace Fsmdev\LaravelSlug;
 
-use Fsmdev\LaravelSlug\Models\Managers\Slug;
 use Fsmdev\LaravelSlug\Facades\Slug as SlugFacade;
+use Fsmdev\LaravelSlug\Models\Slug as SlugModel;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
@@ -48,7 +48,17 @@ class SlugServiceProvider extends ServiceProvider
         Validator::extend('unique_slug', function($attribute, $value, $parameters)
         {
             $type = isset($parameters[0]) ? $parameters[0] : null;
-            return !(bool)SlugFacade::find($value, $type);
+            $id = isset($parameters[1]) ? $parameters[1] : null;
+
+            $query = SlugModel::query()
+                ->where('value', $value)
+                ->where('entity_type', $type);
+
+            if ($id) {
+                $query->where('entity_id', '<>', $id);
+            }
+
+            return !$query->count();
         });
     }
 }
